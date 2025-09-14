@@ -1,14 +1,24 @@
 # 🫁 AI-Assisted Web Based System for Early Detection of Lung Cancer  
 
-This repository contains the implementation of our research work:  
-**"AI-Assisted Web Based System for Early Detection of Lung Cancer Using Deep Learning"**  
-
-Lung cancer is one of the leading causes of cancer-related deaths worldwide.  
-Early and accurate detection can significantly improve patient survival.  
-This project leverages **Deep Learning + GAN-based data augmentation** to build a **Streamlit web application**  
-for real-time classification of lung CT scans into **Normal, Benign, or Malignant**.
+This project proposes an **AI-assisted, web-based SYSTEM for the early detection of lung cancer using CT scan images**.
+By leveraging **deep learning models** and **synthetic data generation (DCGAN),** the system can classify lung CT images into three categories: **Benign, Malignant, and Normal.**
+A user-friendly **web interface (Streamlit)** allows users to upload CT scan images and get instant prediction
 
 ---
+
+##🧾 Abstract
+
+Lung cancer is among the leading causes of cancer-related deaths worldwide, where early detection is critical for effective treatment. Manual CT image analysis is time-consuming, error-prone, and requires expert radiologists.
+
+This project addresses these challenges by:
+
+Expanding a limited dataset using Deep Convolutional GAN (DCGAN)
+
+Training multiple deep learning models (ResNet50, MobileNetV2, DenseNet121, Vision Transformer)
+
+Selecting MobileNetV2 as the best-performing model due to its accuracy, speed, and efficiency
+
+Deploying the final model via a web-based system for real-time medical use
 
 ## 🚀 Features
 - ✅ CT-scan based lung cancer detection  
