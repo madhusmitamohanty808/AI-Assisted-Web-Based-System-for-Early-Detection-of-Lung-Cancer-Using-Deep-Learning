@@ -161,15 +161,4 @@ streamlit run app/app.py
 
 ---
 
-## 🤝 Contribution  
-Contributions are welcome!  
-If you’d like to improve the project, feel free to fork the repo, make changes, and submit a pull request.  
-
----
-
-## 📜 License  
-This project is released under the **MIT License**.  
-
----
-
 ✨ This project demonstrates how **AI + Deep Learning** can enable **real-time, efficient, and accessible lung cancer detection tools**, bridging the gap between research and healthcare applications.  
