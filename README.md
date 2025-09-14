@@ -153,12 +153,13 @@ streamlit run app/app.py
 
 ---
 
-## 🚀 Future Work  
+## 🚀 Future Enhancement
 - Explore **hybrid CNN + Transformer architectures** for higher accuracy  
-- Deploy model to **edge devices / mobile apps**  
-- Extend system to detect other **thoracic diseases** (e.g., pneumonia, TB)  
-- Improve interpretability with **heatmaps / Grad-CAM visualization**  
-
+- Deploy model to **edge devices / mobile apps**
+- Integration with **cloud platforms** for large-scale deployment.
+- Expand with **real clinical data** and more **thoracic diseases** (e.g., pneumonia, TB). 
+- Implementing **explainable AI (XAI)** for better interpretability.  
+ 
 ---
 
 ✨ This project demonstrates how **AI + Deep Learning** can enable **real-time, efficient, and accessible lung cancer detection tools**, bridging the gap between research and healthcare applications.  
