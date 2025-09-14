@@ -1,97 +1,175 @@
-# 🫁 AI-Assisted Web Based System for Early Detection of Lung Cancer Using Deep Learning
+# 🩺 AI-Assisted Web Based System for Early Detection of Lung Cancer  
 
-This project proposes an **AI-assisted, web-based SYSTEM for the early detection of lung cancer using CT scan images**.
-By leveraging **deep learning models** and **synthetic data generation (DCGAN),** the system can classify lung CT images into three categories: **Benign, Malignant, and Normal.**
-A user-friendly **web interface (Streamlit)** allows users to upload CT scan images and get instant prediction
+## 📌 Project Overview  
+This project is an **AI-powered web application** designed for the **early detection of lung cancer** from CT scan images.  
+The system classifies CT scans into three categories:  
 
----
+- **Normal** (healthy lungs)  
+- **Benign** (non-cancerous tumor)  
+- **Malignant** (cancerous tumor)  
 
-🧾 **Abstract**
-
-Lung cancer is among the leading causes of cancer-related deaths worldwide, where early detection is critical for effective treatment. Manual CT image analysis is time-consuming, error-prone, and requires expert radiologists.
-
-This project addresses these challenges by:
-
-Expanding a limited dataset using Deep Convolutional GAN (DCGAN)
-
-Training multiple deep learning models (ResNet50, MobileNetV2, DenseNet121, Vision Transformer)
-
-Selecting MobileNetV2 as the best-performing model due to its accuracy, speed, and efficiency
-
-Deploying the final model via a web-based system for real-time medical use
-
-## 🚀 Features
-- ✅ CT-scan based lung cancer detection  
-- ✅ Handles **imbalanced datasets** using **DCGAN-generated synthetic images**  
-- ✅ Evaluation of **4 state-of-the-art deep learning models**: ResNet50, DenseNet121, Vision Transformer (ViT), MobileNetV2  
-- ✅ Achieves **97.55% accuracy** with MobileNetV2 (best speed-performance trade-off)  
-- ✅ **Streamlit-based deployment** for real-time clinical use  
-- ✅ Lightweight, portable, and efficient for **low-resource environments**  
+The solution integrates **deep learning models** with **GAN-based synthetic image augmentation** to overcome dataset imbalance. The final trained model is deployed as an interactive **Streamlit web application**, allowing clinicians and researchers to upload CT scans and receive **real-time predictions**.  
 
 ---
 
-## 🚀 Key Features
-- **Automated Diagnosis**: Classifies CT scan images into **Benign, Malignant, or Normal** categories.
-- **Synthetic Data Generation**: Uses **DCGAN** to address dataset imbalance by generating additional training samples.
-- **Deep Learning Models**: Trained and compared models including **ResNet50, MobileNetV2, DenseNet121, Vision Transformer (ViT)**.
-- **Best Performing Model**: **MobileNetV2** achieved the highest accuracy and efficiency, suitable for real-time deployment.
-- **Web Deployment**: Streamlit-based interface for real-time predictions with easy image uploads.
+## 🎯 Objectives  
+- Detect lung cancer at an **early stage** using AI.  
+- Reduce dependency on manual diagnosis and **minimize human errors**.  
+- Create a **balanced and robust dataset** using **DCGAN augmentation**.  
+- Deploy an **efficient and lightweight AI model** that works in real-time.  
+- Provide an **accessible web-based diagnostic tool** for healthcare use.  
 
-## 📊 Dataset
-- **Original Data**:  
-  - Benign: 120 images  
-  - Malignant: 561 images  
-  - Normal: 426 images  
-- **Synthetic Data (DCGAN generated)**:  
-  - Benign: +2000 images  
-  - Malignant: +2000 images  
-  - Normal: +1000 images  
+---
 
-Final dataset was **balanced and preprocessed** (resizing, normalization, augmentation).
+## ⚙️ Features  
+✅ Multi-class classification: Normal, Benign, Malignant  
+✅ GAN-based augmentation for dataset balancing  
+✅ Comparative study of **4 deep learning models**  
+✅ Optimized model: **MobileNetV2** (best accuracy vs. efficiency trade-off)  
+✅ **Real-time predictions** via Streamlit web app  
+✅ Outputs **confidence scores** for predictions  
+✅ Easy deployment in **resource-constrained environments**  
 
-## 🧠 Deep Learning Models & Results
-- **ResNet50**: High accuracy but computationally expensive.  
-- **DenseNet121**: Competitive but slower.  
-- **Vision Transformer (ViT)**: Good performance, high computational cost.  
-- **MobileNetV2**: Best trade-off with **97.55% accuracy**, **F1-score: 0.9757**, and fastest inference time (~0.99s).  
+---
 
-## 🌐 Web Deployment
-- Implemented using **Streamlit**.  
-- Allows users to **upload CT scan images** (`.jpg`, `.jpeg`, `.png`).  
-- Provides **real-time predictions** with class labels and confidence scores.  
+## 🧠 Methodology  
 
-## 📦 Tech Stack
-- **Python**
-- **TensorFlow / PyTorch**
-- **DCGAN** (for data augmentation)
-- **MobileNetV2**
-- **Streamlit** (for deployment)
-- **NumPy, OpenCV, Scikit-learn, Matplotlib, Seaborn** (for preprocessing & visualization)
+### 🔹 1. Data Pre-processing  
+- All images resized to **224×224**  
+- Image normalization using ImageNet mean & std  
+- Data split: **80% training, 10% validation, 10% testing**  
+- Applied augmentations:  
+  - Random affine transformations  
+  - Random cropping  
+  - Color jittering  
 
-## 📈 Performance Highlights
-- Accuracy: **97.55%**
-- F1-Score: **0.9757**
-- Fast inference (< 1s per image)
-- Robust predictions with high confidence
+### 🔹 2. GAN-Based Augmentation  
+- Implemented **Deep Convolutional GAN (DCGAN)**  
+- Generated **5,000 synthetic CT images** (benign, malignant, normal)  
+- Solved class imbalance problem and improved generalization  
 
-## 📍 How to Run the Project
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/your-username/AI-Lung-Cancer-Detection.git
-   cd AI-Lung-Cancer-Detection
-   ```
-2. Install dependencies:  
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Run the Streamlit app:  
-   ```bash
-   streamlit run app.py
-   ```
+### 🔹 3. Deep Learning Models  
+Evaluated **four pre-trained models** using transfer learning:  
+1. **ResNet50** – High accuracy but long training time  
+2. **DenseNet121** – Strong feature reuse, fewer parameters  
+3. **Vision Transformer (ViT)** – Transformer-based, powerful but computationally heavy  
+4. **MobileNetV2** – Lightweight and efficient, chosen as final deployed model  
 
-## 📌 Future Enhancements
-- Integration with **cloud platforms** for large-scale deployment.  
-- Extending dataset with **real clinical data**.  
-- Implementing **explainable AI (XAI)** for better interpretability.  
+Each model’s last classification layer was replaced with:  
+- Dropout (rate = 0.5)  
+- Fully connected softmax classifier with **3 output classes**  
 
+### 🔹 4. Evaluation Metrics  
+- Accuracy  
+- Precision, Recall, F1-Score  
+- Training time & Inference time  
+- Confusion Matrix  
+- ROC-AUC  
 
+### 🔹 5. Deployment  
+- **Best model (MobileNetV2)** deployed using **Streamlit**  
+- Web interface enables clinicians to:  
+  - Upload CT scan images  
+  - Get prediction (Normal / Benign / Malignant)  
+  - View confidence percentages  
+
+---
+
+## 📊 Results  
+
+### 🔹 Performance Comparison  
+
+| Model        | Accuracy | F1-Score | Training Time | Inference Time |
+|--------------|----------|----------|---------------|----------------|
+| ResNet50     | 98.04%   | 0.9804   | 1315 min      | ~6.4 sec       |
+| DenseNet121  | 97.88%   | 0.9780   | 929 min       | ~2.9 sec       |
+| Vision Transformer (ViT) | 97.39% | 0.9740 | 1330 min | ~7.7 sec |
+| **MobileNetV2** | **97.55%** | **0.9757** | **192 min** | **~1 sec** |
+
+✅ **Conclusion:**  
+- **ResNet50** → Best accuracy but very slow  
+- **MobileNetV2** → Best balance of accuracy & speed (final deployed model)  
+
+---
+
+## 🛠️ Tech Stack  
+
+- **Programming Language:** Python  
+- **Frameworks:** TensorFlow, PyTorch  
+- **Web Deployment:** Streamlit  
+- **Libraries:** NumPy, OpenCV, Matplotlib, Scikit-learn  
+- **GAN:** DCGAN for synthetic data generation  
+
+---
+
+## 📂 Project Structure  
+
+```
+├── data/                # Dataset (original + GAN-augmented images)
+├── models/              # Trained deep learning models
+├── notebooks/           # Jupyter notebooks for experiments
+├── app/                 # Streamlit web app files
+│   ├── app.py           # Main Streamlit app
+├── requirements.txt     # Project dependencies
+└── README.md            # Documentation
+```
+
+---
+
+## ▶️ Installation & Usage  
+
+### 1️⃣ Clone the repository  
+```bash
+git clone https://github.com/your-username/lung-cancer-detection.git
+cd lung-cancer-detection
+```
+
+### 2️⃣ Create virtual environment (optional but recommended)  
+```bash
+python -m venv venv
+source venv/bin/activate     # For Linux/Mac
+venv\Scripts\activate      # For Windows
+```
+
+### 3️⃣ Install dependencies  
+```bash
+pip install -r requirements.txt
+```
+
+### 4️⃣ Run the Streamlit app  
+```bash
+streamlit run app/app.py
+```
+
+### 5️⃣ Upload CT Scan Image  
+- The app will classify as **Normal / Benign / Malignant**  
+- Displays prediction along with **confidence scores**  
+
+---
+
+## 📈 Sample Outputs  
+- Uploading a **malignant CT scan** → Prediction: Malignant (Confidence: 99.8%)  
+- Uploading a **normal CT scan** → Prediction: Normal (Confidence: 99.6%)  
+
+---
+
+## 🚀 Future Work  
+- Explore **hybrid CNN + Transformer architectures** for higher accuracy  
+- Deploy model to **edge devices / mobile apps**  
+- Extend system to detect other **thoracic diseases** (e.g., pneumonia, TB)  
+- Improve interpretability with **heatmaps / Grad-CAM visualization**  
+
+---
+
+## 🤝 Contribution  
+Contributions are welcome!  
+If you’d like to improve the project, feel free to fork the repo, make changes, and submit a pull request.  
+
+---
+
+## 📜 License  
+This project is released under the **MIT License**.  
+
+---
+
+✨ This project demonstrates how **AI + Deep Learning** can enable **real-time, efficient, and accessible lung cancer detection tools**, bridging the gap between research and healthcare applications.  
